@@ -17,7 +17,7 @@ public class CaesarBoxCipher
         char[][] cipherBox = addMessageToCaesarBox(messageChar, intSqrtOfMessageLength);
 
         printCipherBox(cipherBox);
-        printCipherMessage(cipherBox, intSqrtOfMessageLength);
+        printCipherMessage(cipherBox);
     }
 
     public static char[] messageToCharArray(String message){
@@ -72,7 +72,7 @@ public class CaesarBoxCipher
         }
     }
 
-    public static void printCipherMessage(char[][] cipherBox, int length){
+    public static void printCipherMessage(char[][] cipherBox){
         String cipherMessage = "";
         int row = 0, column = 0;
         while(row!=cipherBox.length){
