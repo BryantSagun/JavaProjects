@@ -20,9 +20,9 @@ public class CaesarBoxCipher
             printCipherBox(cipherBox);
 
             String secretMessage = cipherMessage(cipherBox);
-            System.out.println("The Secret Message: " + secretMessage);
+            System.out.println("The Secret Message: " + secretMessage.toUpperCase());
 
-            String decipheredMessage = decipherMessage(secretMessage.toUpperCase());
+            String decipheredMessage = decipherMessage(secretMessage);
             System.out.println("The Deciphered Message: " + decipheredMessage.toUpperCase() + "\n");
         }
     }
