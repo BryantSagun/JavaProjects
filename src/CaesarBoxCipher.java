@@ -1,14 +1,11 @@
 import java.util.*;
-public class CaesarBoxCipher
-{
+public class CaesarBoxCipher {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
         while(true){
             System.out.print("Enter message for encryption: ");
-            String message = input.nextLine();
-
-            message = cleanMessage(message);
+            String message = cleanMessage(input.nextLine());
 
             boolean checkCharLength = isPerfectSquareLength(message);
             if(!checkCharLength) message = makePerfectSquareLength(message);
@@ -42,8 +39,6 @@ public class CaesarBoxCipher
 
     public static String cleanMessage(String message){
         message = message.replaceAll("\\s+", "");
-        message = message.toLowerCase();
-
         return message;
     }
 
