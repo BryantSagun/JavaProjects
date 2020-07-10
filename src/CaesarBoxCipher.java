@@ -12,17 +12,15 @@ public class CaesarBoxCipher
 
             boolean checkCharLength = isPerfectSquareLength(message);
             if(!checkCharLength) message = makePerfectSquareLength(message);
-            int intSqrtOfMessageLength = (int)Math.sqrt(message.length());
 
-            char[][] cipherBox = addMessageToCaesarBox(message, intSqrtOfMessageLength);
+            char[][] cipherBox = addMessageToCaesarBox(message, (int)Math.sqrt(message.length()));
 
             printCipherBox(cipherBox);
 
             String secretMessage = cipherMessage(cipherBox);
-            System.out.println("\nThe Secret Message: " + secretMessage.toUpperCase());
-
             String decipheredMessage = decipherMessage(secretMessage);
-            System.out.println("The Deciphered Message: " + decipheredMessage.toUpperCase() + "\n");
+            System.out.println("\nThe Secret Message: " + secretMessage.toUpperCase()
+            +"\nThe Original Message: " + decipheredMessage.toUpperCase() + "\n");
         }
     }
 
