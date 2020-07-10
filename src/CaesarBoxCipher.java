@@ -14,26 +14,16 @@ public class CaesarBoxCipher
             if(!checkCharLength) message = makePerfectSquareLength(message);
             int intSqrtOfMessageLength = (int)Math.sqrt(message.length());
 
-            char[] messageChar = messageToCharArray(message);
-            char[][] cipherBox = addMessageToCaesarBox(messageChar, intSqrtOfMessageLength);
+            char[][] cipherBox = addMessageToCaesarBox(message, intSqrtOfMessageLength);
 
             printCipherBox(cipherBox);
 
             String secretMessage = cipherMessage(cipherBox);
-            System.out.println("The Secret Message: " + secretMessage.toUpperCase());
+            System.out.println("\nThe Secret Message: " + secretMessage.toUpperCase());
 
             String decipheredMessage = decipherMessage(secretMessage);
             System.out.println("The Deciphered Message: " + decipheredMessage.toUpperCase() + "\n");
         }
-    }
-
-    public static char[] messageToCharArray(String message){
-        char[] messageChar = new char[message.length()];
-        for(int i=0; i<message.length(); i++){
-            messageChar[i] = message.charAt(i);
-        }
-
-        return messageChar;
     }
 
     public static boolean isPerfectSquareLength(String message){
@@ -59,12 +49,12 @@ public class CaesarBoxCipher
         return message;
     }
 
-    public static char[][] addMessageToCaesarBox(char[] messageChar, int length){
+    public static char[][] addMessageToCaesarBox(String message, int length){
         char[][] cipherBox = new char[length][length];
         int counter = 0, row = 0, column = 0;
-        while(counter!=messageChar.length){
+        while(counter!=message.length()){
             for(row=0; row<cipherBox.length; row++) {
-                cipherBox[row][column] = messageChar[counter];
+                cipherBox[row][column] = message.charAt(counter);
                 counter++;
                 if(row == length-1) column++;
             }
@@ -73,8 +63,9 @@ public class CaesarBoxCipher
     }
 
     public static void printCipherBox(char[][] cipherBox){
+        System.out.println("\nCipher Box: ");
         for(char[] row: cipherBox){
-            System.out.println(row);
+            System.out.println(Arrays.toString(row));
         }
     }
 
@@ -94,7 +85,7 @@ public class CaesarBoxCipher
         String decipheredMessage = "";
         int length = (int) Math.sqrt(secretMessage.length());
         char[][] cipherBox = new char[length][length];
-        int counter = 0, row = 0, column = 0;
+        int counter = 0, row = 0, column;
         while(counter!=secretMessage.length()){
             for(column = 0; column<cipherBox.length; column++){
                 cipherBox[row][column] = secretMessage.charAt(counter);
