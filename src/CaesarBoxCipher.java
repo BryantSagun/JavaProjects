@@ -5,13 +5,9 @@ public class CaesarBoxCipher {
 
         while(true){
             System.out.print("Enter message for encryption: ");
-            String message = cleanMessage(input.nextLine());
-
-            boolean checkCharLength = isPerfectSquareLength(message);
-            if(!checkCharLength) message = makePerfectSquareLength(message);
+            String message = makePerfectSquareLength(cleanMessage(input.nextLine()));
 
             char[][] cipherBox = addMessageToCaesarBox(message, (int)Math.sqrt(message.length()));
-
             printCipherBox(cipherBox);
 
             String secretMessage = cipherMessage(cipherBox);
@@ -19,13 +15,6 @@ public class CaesarBoxCipher {
             System.out.println("\nThe Secret Message: " + secretMessage.toUpperCase()
             +"\nThe Original Message: " + decipheredMessage.toUpperCase() + "\n");
         }
-    }
-
-    public static boolean isPerfectSquareLength(String message){
-        if(message.length()%Math.sqrt(message.length())==0){
-            return true;
-        }
-        return false;
     }
 
     public static String makePerfectSquareLength(String message){
@@ -44,7 +33,7 @@ public class CaesarBoxCipher {
 
     public static char[][] addMessageToCaesarBox(String message, int length){
         char[][] cipherBox = new char[length][length];
-        int counter = 0, row = 0, column = 0;
+        int counter = 0, row, column = 0;
         while(counter!=message.length()){
             for(row=0; row<cipherBox.length; row++) {
                 cipherBox[row][column] = message.charAt(counter);
@@ -64,7 +53,7 @@ public class CaesarBoxCipher {
 
     public static String cipherMessage(char[][] cipherBox){
         String cipherMessage = "";
-        int row = 0, column = 0;
+        int row = 0, column;
         while(row!=cipherBox.length){
             for(column=0; column<cipherBox.length; column++){
                 cipherMessage += cipherBox[row][column];
