@@ -5,16 +5,18 @@ public class CaesarBoxCipher {
         Scanner input = new Scanner(System.in);
 
         while (true) {
-            System.out.print("Enter message for encryption: ");
+            System.out.print("Enter message for Caesar Box Cipher: ");
             String message = makePerfectSquareLength(cleanMessage(input.nextLine()));
 
             char[][] cipherBox = addMessageToCaesarBox(message, (int) Math.sqrt(message.length()));
+
+            System.out.println("\nCipher Box: ");
             printCipherBox(cipherBox);
 
             String secretMessage = cipherMessage(cipherBox);
             String decipheredMessage = decipherMessage(secretMessage);
-            System.out.println("\nThe Secret Message: " + secretMessage.toUpperCase()
-                    + "\nThe Original Message: " + decipheredMessage.toUpperCase() + "\n");
+            System.out.println("\nThe Ciphered Message: " + secretMessage.toUpperCase()
+                    + "\nThe Decoded Message: " + decipheredMessage.toUpperCase() + "\n");
         }
     }
 
@@ -48,7 +50,6 @@ public class CaesarBoxCipher {
     }
 
     public static void printCipherBox(char[][] cipherBox) {
-        System.out.println("\nCipher Box: ");
         for (char[] row : cipherBox) {
             System.out.println(Arrays.toString(row));
         }
